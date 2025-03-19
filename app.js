@@ -29,3 +29,24 @@ function actualizarListaAmigos() {
     }
 }
 
+// sorteando los amigos secretos
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert('¡Debes agregar el nombre de al menos un amigo!');
+        return;
+    }
+    
+    const indice = Math.floor(Math.random() * amigos.length);
+    const resultado = document.getElementById('resultado');
+    const listaAmigos = document.getElementById('listaAmigos');
+    listaAmigos.style.display = 'none';
+    resultado.innerHTML = `
+        <li class="resultado-item">
+            🎉 ¡Tu amig@ secreto es: <strong>${amigos[indice]}</strong>!
+        </li>
+    `;
+}
+
+document.getElementById('amigo').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') agregarAmigo();
+});
